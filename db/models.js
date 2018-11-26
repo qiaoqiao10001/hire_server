@@ -1,8 +1,13 @@
+//引入mongoose
 const mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost:27017/bossz')
 
+//连接数据库
+mongoose.connect('mongodb://localhost:27017/gzhipin')
+
+//获取连接对象
 const conn = mongoose.connection
 
+//通过连接对象监听
 conn.on('connected',function () {
     console.log('数据库连接成功')
 })
@@ -17,7 +22,7 @@ const userSchema = mongoose.Schema({
     info:{type:String},
     company:{type:String}
 })
-
+//
 const UserModel = mongoose.model('user',userSchema)
 
-exports.UserModel = userModel
+exports.UserModel = UserModel
